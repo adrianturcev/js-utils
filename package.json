@@ -1,0 +1,36 @@
+{
+    "name": "js-utils",
+    "description": "Basic javascript utils",
+    "authors": "Adrian Turcev",
+    "version": "0.0.1",
+    "license": "MPL-2.0",
+    "homepage": "https://github.com/adrianturcev/js-utils",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/adrianturcev/JS-UTILS.git"
+    },
+    "bugs": {
+        "url": "https://github.com/adrianturcev/js-utils/issues"
+    },
+    "keywords": ["javascript", "utils"],
+    "main": ".js",
+    "scripts": {
+        "watch": "npx grunt watch",
+        "test": "npx grunt test",
+        "build": "npx grunt dist"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.27.0",
+        "esbuild": "^0.25.4",
+        "eslint": "^9.27.0",
+        "eslint-plugin-jsdoc": "^50.6.17",
+        "globals": "^16.1.0",
+        "grunt": "^1.6.1",
+        "grunt-concurrent": "^3.0.0",
+        "grunt-contrib-watch": "^1.1.0",
+        "grunt-esbuild": "^1.0.1",
+        "grunt-exec": "^3.0.0",
+        "husky": "^9.1.7",
+        "mocha": "^11.4.0"
+    }
+}
