@@ -113,30 +113,37 @@ module.exports = {
     /**
      * Basic contents updater
      * Assuming:
-     * - secondNode already holds states updates
-     * - rendering applied event-listeners already
-     * @param {*} firstNode
-     * @param {*} secondNode
+     * - Rendering applied event-listeners already
+     * - You can apply state afterwards
+     * - You can store newRender afterwards
+     * @param {object} previousRender
+     * @param {object} newRender
+     * @param {object} dom
      */
-    replaceChildren(firstNode, secondNode) {
-        let firstNodeChildren = firstNode.childNodes,
-            secondNodeChildren = secondNode.childNodes;
-        for (let i = 0, c = firstNodeChildren.length; i < c; i++) {
-            if (
-                secondNodeChildren[i]
-                && firstNodeChildren[i].outerHTML !== secondNodeChildren[i].outerHTML
+    vDomDiffAndUpdate(previousRender, newRender, dom) {
+        // Assuming overwrite or insertion
+        let $ =  this;
+        $.changedNodes = [];
+        let leftItems = previousRender.childNodes,
+            rightItems = newRender.childNodes,
+            domItems = dom.childNodes;
+        if (domItems.length > rightItems.length) {
+            let diffLength = domItems.length - rightItems.length;
+            for (let i = 0, c = diffLength; i < c; i++) {
+                dom.lastChild.remove();
+            }
+        }
+        for (let i = 0, c = rightItems.length; i < c; i++) {
+            if (!leftItems[i]) {
+                let node = rightItems[i].cloneNode(true);
+                $.changedNodes.push(node);
+                dom.appendChild(node);
+            } else if (
+                leftItems[i].outerHTML !== rightItems[i].outerHTML
             ) {
-                firstNodeChildren[i].parentNode.replaceChild(firstNodeChildren[i], secondNodeChildren[i]);
-            }
-        }
-        if (firstNodeChildren.length < secondNodeChildren.length) {
-            for (let i = firstNodeChildren.length, c = secondNodeChildren.length; i < c; i++) {
-                firstNodeChildren[i].parentNode.appendChild(secondNodeChildren[i])
-            }
-        }
-        if (firstNodeChildren.length > secondNodeChildren.length) {
-            for (let i = firstNodeChildren.length - 1; i > secondNodeChildren.length - 1; i--) {
-                firstNodeChildren[i].remove();
+                let node = rightItems[i].cloneNode(true);
+                $.changedNodes.push(node);
+                domItems[i].replaceWith(node);
             }
         }
     },

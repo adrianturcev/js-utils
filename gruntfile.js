@@ -21,13 +21,6 @@ module.exports = function(grunt) {
                     livereload: true
                 },
             },
-            cssConcatenation: {
-                files: ['css/*.css', '!css/main.css'],
-                tasks: ['concat:css'],
-                options: {
-                    livereload: true
-                },
-            },
         },
         exec: {
             mocha: {
@@ -45,44 +38,21 @@ module.exports = function(grunt) {
                 minify: true
             },
             dev: {
-                entryPoints: ['app.js'],
+                entryPoints: ['main.js'],
                 outfile: './out.js',
                 bundle: true,
                 sourcemap: true,
             }
         },
-        concat: {
-            css: {
-                options: {
-                    separator: '\n',
-                },
-                src: [
-                    'css/0-noscript.css',
-                    'css/1-root.css',
-                    'css/2-contents.css'
-                ],
-                dest: 'css/main.css'
-            }
-        },
-        cssmin: {
-            options: {},
-            target: {
-                files: {
-                    'css/main.min.css': ['css/main.css']
-                }
-            }
-        }
     });
-
+[cha] replaceChildren() to  vDomDiffAndUpdate()
     // Load the plugin that provides the tasks.
     grunt.loadNpmTasks('grunt-exec');
     grunt.loadNpmTasks('grunt-esbuild');
     grunt.loadNpmTasks('grunt-concurrent');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     // Default task(s).
     grunt.registerTask('test', ['exec:mocha']);
-    grunt.registerTask('dist', ['esbuild', 'cssmin']);
+    grunt.registerTask('dist', ['esbuild']);
 };
