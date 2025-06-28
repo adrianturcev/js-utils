@@ -1,5 +1,4 @@
-module.exports =
-(function () { return {
+const yaju = {
     // # Nil
 
     // I like the NOT operator
@@ -298,4 +297,5 @@ module.exports =
         return functions.reduce((res, fun) => fun(res), input);
     }
 }
-});
+
+module.exports = yaju;
