@@ -2,7 +2,7 @@
     "name": "yet-another-js-utils",
     "description": "Basic javascript utils",
     "authors": "Adrian Turcev",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "license": "MPL-2.0",
     "homepage": "https://github.com/adrianturcev/js-utils",
     "repository": {
@@ -13,7 +13,7 @@
         "url": "https://github.com/adrianturcev/js-utils/issues"
     },
     "keywords": ["javascript", "utils"],
-    "main": ".js",
+    "main": "js-utils.js",
     "scripts": {
         "watch": "npx grunt watch",
         "test": "npx grunt test",
