@@ -13,7 +13,7 @@ const yaju = require('yet-another-js-utils');
 // (...)
 yaju.diffVDomAndUpdate(newRender, previousRender, dom);
 this.previousRender = newRender;
-applyState(dom);
+diffState(dom);
 ```
 
 ## Dependencies
