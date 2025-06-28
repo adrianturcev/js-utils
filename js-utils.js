@@ -13,7 +13,7 @@ const yaju = {
      * @param { boolean } exp
      * @returns { boolean }
      */
-    nil(exp) { // values implicitly considered functions
+    nil: function (exp) { // values implicitly considered functions
         if (
             exp === null
             || typeof exp === 'undefined'
@@ -35,7 +35,7 @@ const yaju = {
      * @param { number } end
      * @returns
      */
-    hack(array, start, end) {
+    hack: function (array, start, end) {
         return array.slice(start, end + 1);
     },
 
@@ -51,7 +51,7 @@ const yaju = {
      * @param {*} pruningFunction
      * @returns
      */
-    pick(array, pruningFunction) {
+    pick: function (array, pruningFunction) {
         return array.filter(pruningFunction);
     },
 
@@ -62,7 +62,7 @@ const yaju = {
      * @param {*} filteringFunction
      * @returns
      */
-    prune(array, filteringFunction) {
+    prune: function (array, filteringFunction) {
         return array.filter(function (x) {
             return !filteringFunction(x);
         });
@@ -77,7 +77,7 @@ const yaju = {
      * @param {*} checkingFunction
      * @returns
      */
-    check(array, checkingFunction) {
+    check: function (array, checkingFunction) {
         return array.every(checkingFunction);
     },
 
@@ -86,7 +86,7 @@ const yaju = {
      * @param { string } string
      * @returns
      */
-    escape(string) {
+    escape: function (string) {
         return string
             .replace(/&/g, '&amp;')
             .replace(/</g, '&lt;')
@@ -100,7 +100,7 @@ const yaju = {
      * @param {Array} strings
      * @returns {object} a DocumentFragment
      */
-    html(strings) {
+    html: function (strings) {
         let output = strings[0], // assumes empty string start?
             max = Math.max(strings.length, arguments.length - 1);
         for (let i = 1; i < max; i++) {
@@ -120,7 +120,7 @@ const yaju = {
      * @param {*} firstNode
      * @param {*} secondNode
      */
-    replaceChildren(firstNode, secondNode) {
+    replaceChildren: function (firstNode, secondNode) {
         let firstNodeChildren = firstNode.childNodes,
             secondNodeChildren = secondNode.childNodes;
         for (let i = 0, c = firstNodeChildren.length; i < c; i++) {
@@ -158,7 +158,7 @@ const yaju = {
      * @param { object } element
      * @param { string } state
      */
-    addDataState(element, state) {
+    addDataState: function (element, state) {
         let stateArray = [];
         if (
             element.dataset.state
@@ -179,7 +179,7 @@ const yaju = {
      * @param { object } element
      * @param { string } state
      */
-    removeDataState(element, state) {
+    removeDataState: function (element, state) {
         let stateArray = [];
         if (
             element.dataset.state
@@ -201,7 +201,7 @@ const yaju = {
      * @param { string } stateToRemove
      * @param { string } stateToAdd
      */
-    replaceDataState(element, stateToRemove, stateToAdd) {
+    replaceDataState: function (element, stateToRemove, stateToAdd) {
         this.removeDataState(element, stateToRemove);
         this.addDataState(element, stateToAdd);
     },
@@ -211,7 +211,7 @@ const yaju = {
      * @param { object } element
      * @param { string } state
      */
-    toggleDataState(element, state) {
+    toggleDataState: function (element, state) {
         let stateArray = element.dataset.state.split(' ');
         if (stateArray.indexOf(state) == -1) {
             this.addDataState(element, state);
@@ -229,7 +229,7 @@ const yaju = {
      * @param {boolean} isJson Response contains json
      * @param {object} callbackContext
      */
-    ajaxGet(url, callback, isJson, callbackContext) {
+    ajaxGet: function (url, callback, isJson, callbackContext) {
         var req = new XMLHttpRequest();
         req.open("GET", url);
         req.addEventListener("load", function () {
@@ -265,7 +265,7 @@ const yaju = {
      * @param {object} successCallbackContext
      * @param {object} failureCallbackContext
      */
-    ajaxPost(url, data, successCallback, failureCallback, isJson, successCallbackContext, failureCallbackContext) {
+    ajaxPost: function (url, data, successCallback, failureCallback, isJson, successCallbackContext, failureCallbackContext) {
         var req = new XMLHttpRequest();
         req.open("POST", url);
         req.addEventListener("load", function () {
@@ -293,7 +293,7 @@ const yaju = {
      * @param {*} input
      * @returns {*}
      */
-    pipe(input, ...functions) {
+    pipe: function (input, ...functions) {
         return functions.reduce((res, fun) => fun(res), input);
     }
 }
