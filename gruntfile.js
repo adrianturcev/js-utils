@@ -45,7 +45,7 @@ module.exports = function(grunt) {
             }
         },
     });
-[cha] replaceChildren() to  vDomDiffAndUpdate()
+
     // Load the plugin that provides the tasks.
     grunt.loadNpmTasks('grunt-exec');
     grunt.loadNpmTasks('grunt-esbuild');
