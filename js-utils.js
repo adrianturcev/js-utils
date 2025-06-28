@@ -107,9 +107,7 @@ module.exports = {
             output += arguments[i];
             output += strings[i];
         }
-        let fragment = document.createDocumentFragment();
-        fragment.innerHTML = output;
-        return fragment;
+        return output;
     },
 
     /**
