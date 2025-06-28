@@ -298,4 +298,4 @@ const yaju = {
     }
 }
 
-module.exports = yaju;
+module.exports = {...yaju};
