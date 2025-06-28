@@ -15,7 +15,7 @@ module.exports = function(grunt) {
         },
         watch: {
             devBuild: {
-                files: ['app.js', 'js/*.js'],
+                files: ['main.js', 'js/*.js'],
                 tasks: ['esbuild:dev', 'exec:mocha'],
                 options: {
                     livereload: true
@@ -39,8 +39,8 @@ module.exports = function(grunt) {
                 buildFunction: require('esbuild').build
             },
             prod: {
-                entryPoints: ['app.js'],
-                outfile: './dist/client.min.js',
+                entryPoints: ['main.js'],
+                outfile: './dist/yaju.min.js',
                 bundle: true,
                 minify: true
             },

@@ -1,4 +1,5 @@
-module.exports = {
+module.exports =
+(function () { return {
     // # Nil
 
     // I like the NOT operator
@@ -296,4 +297,5 @@ module.exports = {
     pipe(input, ...functions) {
         return functions.reduce((res, fun) => fun(res), input);
     }
-};
+}
+});

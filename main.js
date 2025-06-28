@@ -1,3 +1,3 @@
 (function () {
-    window.Damon = require('./js-utils.js');
+    window.yaju = require('./js-utils.js');
 })();
