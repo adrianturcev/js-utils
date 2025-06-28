@@ -120,7 +120,7 @@ module.exports = {
      * @param {object} newRender
      * @param {object} dom
      */
-    vDomDiffAndUpdate(previousRender, newRender, dom) {
+    diffVDomAndUpdate(previousRender, newRender, dom) {
         // Assuming overwrite or insertion
         let $ =  this;
         $.changedNodes = [];

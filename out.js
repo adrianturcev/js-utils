@@ -108,7 +108,7 @@
          * @param {object} newRender
          * @param {object} dom
          */
-        vDomDiffAndUpdate(previousRender, newRender, dom) {
+        diffVDomAndUpdate(previousRender, newRender, dom) {
           let $ = this;
           $.changedNodes = [];
           let leftItems = previousRender.childNodes, rightItems = newRender.childNodes, domItems = dom.childNodes;

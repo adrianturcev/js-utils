@@ -1,25 +1,26 @@
-- Each CID has an npm counterpart
-- One main function for inputs
-- Link to original
-- Happy programming
+# Yet-Another-JS-Utils
 
-# Usage
+## Installation
 
-- update package.json
-- update .nvmrc
-- update grunfile.js
-- update launcher.sh
-- update index.md
-- update LICENSE.txt
-- update README.md
-- Run "Tasks: Allow Automatic Tasks" in vscode's palette (Ctrl+Shift+P)
+```
+npm install yet-another-js-utils
+```
 
-# Dependencies
+## Usage
 
-- normalize.css
-    - https://github.com/csstools/normalize.css/blob/main/normalize.css
+```js
+const yaju = require('yet-another-js-utils');
+// (...)
+yaju.diffVDomAndUpdate(newRender, previousRender, dom);
+this.previousRender = newRender;
+applyState(dom);
+```
 
-# License
+## Dependencies
+
+0
+
+## License
 
 Copyright (c) PLANVIII. All rights reserved.
 
