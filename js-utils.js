@@ -231,7 +231,7 @@ module.exports = {
      */
     resetDataState(element) {
         element.dataset.state = '';
-    }
+    },
 
     //# AJAX Functions
 
