@@ -225,6 +225,14 @@ module.exports = {
         }
     },
 
+    /**
+     * Reset
+     * @param { object } element
+     */
+    resetDataState(element) {
+        element.dataset.state = '';
+    }
+
     //# AJAX Functions
 
     /**

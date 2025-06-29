@@ -11,14 +11,15 @@ npm install yet-another-js-utils
 ```js
 const yaju = require('yet-another-js-utils');
 // (...)
-yaju.diffVDomAndUpdate(newRender, previousRender, dom);
+yaju.diffVDomAndUpdate(previousRender, newRender, dom);
 this.previousRender = newRender;
-diffState(dom);
+yaju.resetDataState(dom);
+yaju.addDataState(dom, 'updated');
 ```
 
 ## Dependencies
 
-0
+None.
 
 ## License
 
