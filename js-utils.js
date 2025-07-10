@@ -9,7 +9,7 @@ module.exports = {
 
     /**
      * Nil
-     * Neither null nor undefined
+     * Either null or undefined
      * @param { boolean } exp
      * @returns { boolean }
      */
