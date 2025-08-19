@@ -18,16 +18,15 @@
         // - single argument
         /**
          * Nil
-         * Neither null nor undefined
+         * Either null or undefined
          * @param { boolean } exp
          * @returns { boolean }
          */
         nil(exp) {
           if (exp === null || typeof exp === "undefined") {
             return true;
-          } else {
-            return false;
           }
+          return false;
         },
         // # Hack
         // .slice() uses a closed-open interval

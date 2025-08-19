@@ -19,9 +19,8 @@ module.exports = {
             || typeof exp === 'undefined'
         ) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     },
 
     // # Hack
