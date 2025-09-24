@@ -123,9 +123,32 @@
               $.changedNodes.push(node);
               dom.appendChild(node);
             } else if (leftItems[i].outerHTML !== rightItems[i].outerHTML) {
-              let node = rightItems[i].cloneNode(true);
-              $.changedNodes.push(node);
-              domItems[i].replaceWith(node);
+              let voidElementsList = [
+                "AREA",
+                "BASE",
+                "BR",
+                "COL",
+                "EMBED",
+                "HR",
+                "IMG",
+                "INPUT",
+                "LINK",
+                "META",
+                "PARAM",
+                "SOURCE",
+                "TRACK",
+                "WBR"
+              ], closingTagLength = 0;
+              if (voidElementsList.indexOf(rightItems[i].tagName) === -1) {
+                closingTagLength = 3 + rightItems[i].tagName.length;
+              }
+              if (leftItems[i].tagName !== rightItems[i].tagName || leftItems[i].innerHTML === rightItems[i].innerHTML || leftItems[i].outerHTML.slice(-1 * leftItems.innerHTML.length - closingTagLength) !== rightItems[i].outerHTML.slice(-1 * rightItems.innerHTML.length - closingTagLength)) {
+                let node = rightItems[i].cloneNode(true);
+                $.changedNodes.push(node);
+                domItems[i].replaceWith(node);
+              } else {
+                this.diffVDomAndUpdate(leftItems[i], rightItems[i], domItems[i]);
+              }
             }
           }
         },
