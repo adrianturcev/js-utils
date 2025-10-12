@@ -1,9 +1,9 @@
 module.exports = {
-    QS(cssSelector) {
+    qs(cssSelector) {
         return document.querySelector(cssSelector);
     },
 
-    QSA(cssSelector) {
+    qsa(cssSelector) {
         return Array.from(document.querySelector(cssSelector));
     },
 
@@ -88,6 +88,17 @@ module.exports = {
     },
 
     /**
+     * Pipe
+     * Function piping with initial input
+     * @param {*} functions
+     * @param {*} input
+     * @returns {*}
+     */
+    pipe(input, ...functions) {
+        return functions.reduce((res, fun) => fun(res), input);
+    },
+
+    /**
      * Escape
      * @param { string } string
      * @returns
@@ -104,7 +115,7 @@ module.exports = {
     /**
      * DOM-rendering template tag
      * @param {Array} strings
-     * @returns {object} a DocumentFragment
+     * @returns {String}
      */
     html(strings) {
         let output = strings[0], // assumes empty string start?
@@ -321,16 +332,5 @@ module.exports = {
             data = JSON.stringify(data);
         }
         req.send(data);
-    },
-
-    /**
-     * Pipe
-     * Function piping with initial input
-     * @param {*} functions
-     * @param {*} input
-     * @returns {*}
-     */
-    pipe(input, ...functions) {
-        return functions.reduce((res, fun) => fun(res), input);
     }
 }

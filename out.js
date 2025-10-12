@@ -10,10 +10,10 @@
     "js-utils.js"(exports, module) {
       "use strict";
       module.exports = {
-        QS(cssSelector) {
+        qs(cssSelector) {
           return document.querySelector(cssSelector);
         },
-        QSA(cssSelector) {
+        qsa(cssSelector) {
           return Array.from(document.querySelector(cssSelector));
         },
         // # Nil
@@ -83,6 +83,16 @@
           return array.every(checkingFunction);
         },
         /**
+         * Pipe
+         * Function piping with initial input
+         * @param {*} functions
+         * @param {*} input
+         * @returns {*}
+         */
+        pipe(input, ...functions) {
+          return functions.reduce((res, fun) => fun(res), input);
+        },
+        /**
          * Escape
          * @param { string } string
          * @returns
@@ -93,7 +103,7 @@
         /**
          * DOM-rendering template tag
          * @param {Array} strings
-         * @returns {object} a DocumentFragment
+         * @returns {String}
          */
         html(strings) {
           let output = strings[0], max = Math.max(strings.length, arguments.length - 1);
@@ -289,16 +299,6 @@
             data = JSON.stringify(data);
           }
           req.send(data);
-        },
-        /**
-         * Pipe
-         * Function piping with initial input
-         * @param {*} functions
-         * @param {*} input
-         * @returns {*}
-         */
-        pipe(input, ...functions) {
-          return functions.reduce((res, fun) => fun(res), input);
         }
       };
     }
