@@ -10,6 +10,12 @@
     "js-utils.js"(exports, module) {
       "use strict";
       module.exports = {
+        QS(cssSelector) {
+          return document.querySelector(cssSelector);
+        },
+        QSA(cssSelector) {
+          return Array.from(document.querySelector(cssSelector));
+        },
         // # Nil
         // I like the NOT operator
         // I like strict type checking
