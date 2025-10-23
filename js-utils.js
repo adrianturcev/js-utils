@@ -168,8 +168,8 @@ module.exports = {
                     leftItems[i].tagName !== rightItems[i].tagName
                     || leftItems[i].innerHTML === rightItems[i].innerHTML
                     || (
-                        leftItems[i].outerHTML.slice((-1 * leftItems.innerHTML.length) - closingTagLength)
-                        !==  rightItems[i].outerHTML.slice((-1 * rightItems.innerHTML.length) - closingTagLength)
+                        leftItems[i].outerHTML.slice((-1 * leftItems[i].innerHTML.length) - closingTagLength)
+                        !==  rightItems[i].outerHTML.slice((-1 * rightItems[i].innerHTML.length) - closingTagLength)
                     )
                 ) {
                     let node = rightItems[i].cloneNode(true);

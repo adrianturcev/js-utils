@@ -158,7 +158,7 @@
               if (voidElementsList.indexOf(rightItems[i].tagName) === -1) {
                 closingTagLength = 3 + rightItems[i].tagName.length;
               }
-              if (leftItems[i].tagName !== rightItems[i].tagName || leftItems[i].innerHTML === rightItems[i].innerHTML || leftItems[i].outerHTML.slice(-1 * leftItems.innerHTML.length - closingTagLength) !== rightItems[i].outerHTML.slice(-1 * rightItems.innerHTML.length - closingTagLength)) {
+              if (leftItems[i].tagName !== rightItems[i].tagName || leftItems[i].innerHTML === rightItems[i].innerHTML || leftItems[i].outerHTML.slice(-1 * leftItems[i].innerHTML.length - closingTagLength) !== rightItems[i].outerHTML.slice(-1 * rightItems[i].innerHTML.length - closingTagLength)) {
                 let node = rightItems[i].cloneNode(true);
                 $.changedNodes.push(node);
                 domItems[i].replaceWith(node);
