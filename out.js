@@ -123,7 +123,7 @@
          * @param {object} newRender
          * @param {object} dom
          */
-        diffVDomAndUpdate(previousRender, newRender, dom) {
+        diffVDomAndUpdate(previousRender, newRender, dom, maxDepth = 0, depth = 0) {
           let $ = this;
           $.changedNodes = [];
           let leftItems = previousRender.childNodes, rightItems = newRender.childNodes, domItems = dom.childNodes;
@@ -158,12 +158,18 @@
               if (voidElementsList.indexOf(rightItems[i].tagName) === -1) {
                 closingTagLength = 3 + rightItems[i].tagName.length;
               }
-              if (leftItems[i].tagName !== rightItems[i].tagName || leftItems[i].innerHTML === rightItems[i].innerHTML || leftItems[i].outerHTML.slice(-1 * leftItems[i].innerHTML.length - closingTagLength) !== rightItems[i].outerHTML.slice(-1 * rightItems[i].innerHTML.length - closingTagLength)) {
+              if (leftItems[i].tagName !== rightItems[i].tagName || leftItems[i].innerHTML === rightItems[i].innerHTML || leftItems[i].outerHTML.slice(0, -1 * leftItems[i].innerHTML.length - closingTagLength) !== rightItems[i].outerHTML.slice(0, -1 * rightItems[i].innerHTML.length - closingTagLength)) {
                 let node = rightItems[i].cloneNode(true);
                 $.changedNodes.push(node);
                 domItems[i].replaceWith(node);
               } else {
-                this.diffVDomAndUpdate(leftItems[i], rightItems[i], domItems[i]);
+                if (maxDepth === 0 || maxDepth > depth) {
+                  this.diffVDomAndUpdate(leftItems[i], rightItems[i], domItems[i], maxDepth, depth + 1);
+                } else {
+                  let node = rightItems[i].cloneNode(true);
+                  $.changedNodes.push(node);
+                  domItems[i].replaceWith(node);
+                }
               }
             }
           }
