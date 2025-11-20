@@ -137,8 +137,7 @@ module.exports = {
      * @param {object} newRender
      * @param {object} dom
      */
-    diffVDomAndUpdate(previousRender, newRender, dom, maxDepth = 0, depth = 0) {
-        depth++;
+    diffVDomAndUpdate(previousRender, newRender, dom, maxDepth = 0, depth = 1) {
         // Assuming overwrite or insertion
         let $ =  this;
         $.changedNodes = [];
@@ -182,7 +181,7 @@ module.exports = {
                         maxDepth === 0
                         || maxDepth > depth
                     ) {
-                        this.diffVDomAndUpdate(leftItems[i], rightItems[i], domItems[i], maxDepth, depth);
+                        this.diffVDomAndUpdate(leftItems[i], rightItems[i], domItems[i], maxDepth, 1 * depth);
                     } else {
                         let node = rightItems[i].cloneNode(true);
                         $.changedNodes.push(node);
