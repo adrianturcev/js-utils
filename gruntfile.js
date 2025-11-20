@@ -15,7 +15,7 @@ module.exports = function(grunt) {
         },
         watch: {
             devBuild: {
-                files: ['main.js', 'js/*.js'],
+                files: ['main.js', 'js-utils.js'],
                 tasks: ['esbuild:dev', 'exec:mocha'],
                 options: {
                     livereload: true

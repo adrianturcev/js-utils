@@ -124,6 +124,7 @@
          * @param {object} dom
          */
         diffVDomAndUpdate(previousRender, newRender, dom, maxDepth = 0, depth = 0) {
+          depth++;
           let $ = this;
           $.changedNodes = [];
           let leftItems = previousRender.childNodes, rightItems = newRender.childNodes, domItems = dom.childNodes;
@@ -164,7 +165,7 @@
                 domItems[i].replaceWith(node);
               } else {
                 if (maxDepth === 0 || maxDepth > depth) {
-                  this.diffVDomAndUpdate(leftItems[i], rightItems[i], domItems[i], maxDepth, depth + 1);
+                  this.diffVDomAndUpdate(leftItems[i], rightItems[i], domItems[i], maxDepth, depth);
                 } else {
                   let node = rightItems[i].cloneNode(true);
                   $.changedNodes.push(node);
