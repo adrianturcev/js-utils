@@ -1,8 +1,26 @@
 module.exports = {
+
+    /**
+     * @param {string} a
+     * @param {string} b
+     * @returns {number}
+     */
+    compareCharacters(a, b) {
+        return a.codePointAt(0) - b.codePointAt(0);
+    },
+
+    /**
+     * @param {string} cssSelector
+     * @returns {HTMLElement}
+     */
     qs(cssSelector) {
         return document.querySelector(cssSelector);
     },
 
+    /**
+     * @param {string} cssSelector
+     * @returns {NodeList}
+     */
     qsa(cssSelector) {
         return Array.from(document.querySelector(cssSelector));
     },
@@ -137,7 +155,7 @@ module.exports = {
      * @param {object} newRender
      * @param {object} dom
      */
-    diffVDomAndReplace(previousRender, newRender, dom, maxDepth = 0, depth = 1) {
+    diffVDomAndUpdate(previousRender, newRender, dom, maxDepth = 0, depth = 1) {
         // Assuming overwrite or insertion
         let $ =  this;
         $.changedNodes = [];
@@ -181,7 +199,7 @@ module.exports = {
                         maxDepth === 0
                         || maxDepth > depth
                     ) {
-                        this.diffVDomAndUpdate(leftItems[i], rightItems[i], domItems[i], maxDepth, depth + 1);
+                        this.diffVDomAndReplace(leftItems[i], rightItems[i], domItems[i], maxDepth, depth + 1);
                     } else {
                         let node = rightItems[i].cloneNode(true);
                         $.changedNodes.push(node);
