@@ -121,10 +121,10 @@
          * @param {Array} strings
          * @returns {String}
          */
-        html(strings) {
+        htmlEscape(strings) {
           let output = strings[0], max = Math.max(strings.length, arguments.length - 1);
           for (let i = 1; i < max; i++) {
-            output += arguments[i];
+            output += this.escape(arguments[i]);
             output += strings[i];
           }
           return output;
